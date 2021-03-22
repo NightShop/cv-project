@@ -1,10 +1,29 @@
 import { Component } from "react";
+import GeneralInfoInput from "./GeneralInfoInput";
 
 class GeneralInfo extends Component {
+    constructor() {
+        super();
+        this.state = {
+            firstName: "",
+            lastName: "",
+            email: "",
+            phoneNumber: "",
+        };
+
+        this.updateGeneralInfo = this.updateGeneralInfo.bind(this);
+    }
+
+    updateGeneralInfo(id, value) {
+        this.setState({
+            [id]: value,
+        })
+        console.log(this.state);
+    }
 
     render() {
         return (
-            <h2>Hello from general Info</h2>
+            <GeneralInfoInput updateGeneralInfo={this.updateGeneralInfo} generalInfo={this.state} />
         );
     }
 }
