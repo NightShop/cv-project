@@ -1,8 +1,12 @@
 import GeneralInfo from "./Components/GeneralInfo";
+import WorkExperienceSection from "./Components/WorkExperienceSection";
 
 function App() {
   return (
-    <GeneralInfo />
+    <div id="container">
+      <GeneralInfo />
+      <WorkExperienceSection />
+    </div>
   );
 }
 
