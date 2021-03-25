@@ -9,46 +9,58 @@ class WorkExperienceSection extends Component {
         super();
 
         this.state = {
-            exp: [{
-                key: uniqid(),
+            idena: {
                 companyName: "1",
                 positionTitle: "1",
                 titleOfStudy: "1",
                 dateFrom: "1",
                 dateTo: "1",
                 editorOpen: false
-            }, {
-                key: uniqid(),
+            },
+            iddva: {
                 companyName: "2",
                 positionTitle: "2",
                 titleOfStudy: "2",
                 dateFrom: "2",
                 dateTo: "2",
                 editorOpen: false
-            }]
-        }
+            }}
+        
 
         this.toggleEditor = this.toggleEditor.bind(this);
+        this.updateState = this.toggleEditor.bind(this);
     }
 
-    toggleEditor(key) {
-        const index = this.state.exp.findIndex(obj => {
-            return obj.key === key;
-        });
-        let experiences = [...this.state.exp];
-        let experienceTemp = experiences[index];
-        console.log(experiences);
-        experienceTemp.editorOpen = !this.state.exp[index].editorOpen;
-        this.setState({exp: experiences});
+    toggleEditor(Key) {
+        console.log("toggleeditor");
+        let temp = {...this.state[Key]};
+        const boool = !temp.editorOpen;
+        temp.editorOpen = boool;
+        this.setState({[Key]: temp});
+    }
+
+    updateState(event, key) {
+        console.log("in update", key);
+        const newValue = event.target.value;
+        console.log("in update", newValue);
+        let temp = {
+            ...this.state[key],
+        };
+        temp.companyName = newValue;
+        console.log("in update", temp);
+        
+        this.setState({[key]: temp});
+        
     }
 
     render() {
         let rows = [];
-        this.state.exp.forEach(row => {
-            if (row.editorOpen) {
-                rows.push(<WorkExperienceEditorRow key={row.key} toggleEditor={this.toggleEditor} data={row} />)
+        Object.keys(this.state).forEach(key => {
+            if (this.state[key].editorOpen) {
+                rows.push(<WorkExperienceEditorRow key={key} dataID={key} updateState={this.updateState} toggleEditor={this.toggleEditor} companyName={this.state[key].companyName} data={this.state[key]} />)
+                
             } else {
-                rows.push(<WorkExperienceRow key={row.key} toggleEditor={this.toggleEditor} data={row} />)
+                rows.push(<WorkExperienceRow key={key} dataID={key} updateState={this.updateState} toggleEditor={this.toggleEditor} data={this.state[key]} />)
             }
 
         });

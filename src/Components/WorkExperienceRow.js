@@ -3,25 +3,27 @@ import { Component } from "react";
 class WorkExperienceRow extends Component {
 
     render() {
+        let companyName, positionTitle, titleOfStudy, dateFrom, dateTo;
+        ({companyName, positionTitle, titleOfStudy, dateFrom, dateTo} = this.props.data);
         return (
-            <tr key={this.props.data.key}>
+            <tr>
                 <td>
-                    company NAme
+                    {companyName}
                 </td>
                 <td>
-                    position title
+                    {positionTitle}
                 </td>
                 <td>
-                    title of study
+                    {titleOfStudy}
                 </td>
                 <td>
-                    date from
+                    {dateFrom}
                 </td>
                 <td>
-                    date to
+                    {dateTo}
                 </td>
                 <td>
-                    <button onClick={(e) => this.props.toggleEditor(this.props.data.key)}>
+                    <button onClick={(e) => this.props.toggleEditor(this.props.dataID)}>
                         Edit
                     </button>
                 </td>
