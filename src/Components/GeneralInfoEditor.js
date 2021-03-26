@@ -32,7 +32,7 @@ class GeneralInfoInput extends Component {
                     <label htmlFor="phoneNumber">Phone No.:</label>
                     <input id="phoneNumber" onChange={this.setGeneralInfo} placeholder="Phone Number" value={this.props.generalInfo.phoneNumber}></input>
                 </div>
-                <button type="button" onClick={this.props.toggleEditor} >Update</button>
+                <button type="button" onClick={this.props.toggleEditor} >Submit</button>
             </form>
         )
     }

@@ -14,32 +14,33 @@ class WorkExperienceEditorRow extends Component {
     }
 
     render() {
-        let companyName, positionTitle, titleOfStudy, dateFrom, dateTo;
-        ({companyName, positionTitle, titleOfStudy, dateFrom, dateTo} = this.props.data);
+        let companyName, positionTitle, mainTasks, dateFrom, dateTo;
+        ({companyName, positionTitle, mainTasks, dateFrom, dateTo} = this.props.data);
+        console.log(this.props);        
         return (
             <tr>
                 <td>
                     <label htmlFor="companyName">Company Name:</label>
-                    <input onChange={(e) => this.props.updateState(e, this.props.dataID)} id="companyName" value={this.props.companyName}></input>
+                    <input onChange={(e) => this.props.updateState(e, this.props.dataID)} id="companyName" value={companyName}></input>
                 </td>
                 <td>
                     <label htmlFor="positionTitle">Position Title:</label>
-                    <input id="positionTitle" value={positionTitle}></input>
+                    <input onChange={(e) => this.props.updateState(e, this.props.dataID)} id="positionTitle" value={positionTitle}></input>
                 </td>
                 <td>
-                    <label htmlFor="titleOfStudy">Title Of Study:</label>
-                    <input id="titleOfStudy" value={titleOfStudy}></input>
+                    <label htmlFor="mainTasks">Main tasks:</label>
+                    <input onChange={(e) => this.props.updateState(e, this.props.dataID)} id="mainTasks" value={mainTasks}></input>
                 </td>
                 <td>
                     <label htmlFor="dateFrom">From:</label>
-                    <input id="dateFrom" value={dateFrom}></input>
+                    <input onChange={(e) => this.props.updateState(e, this.props.dataID)} id="dateFrom" value={dateFrom}></input>
                 </td>
                 <td>
                     <label htmlFor="dateTo">To:</label>
-                    <input id="dateTo" value={dateTo}></input>
+                    <input onChange={(e) => this.props.updateState(e, this.props.dataID)} id="dateTo" value={dateTo}></input>
                 </td>
                 <td>
-                    <button onClick={() => this.handleClick()}>Save</button>
+                    <button onClick={() => this.handleClick()}>{this.props.data.isNew ? "Add" : "Update"}</button>
                 </td>
             </tr>
         );

@@ -3,8 +3,8 @@ import { Component } from "react";
 class WorkExperienceRow extends Component {
 
     render() {
-        let companyName, positionTitle, titleOfStudy, dateFrom, dateTo;
-        ({companyName, positionTitle, titleOfStudy, dateFrom, dateTo} = this.props.data);
+        let companyName, positionTitle, mainTasks, dateFrom, dateTo;
+        ({companyName, positionTitle, mainTasks, dateFrom, dateTo} = this.props.data);
         return (
             <tr>
                 <td>
@@ -14,7 +14,7 @@ class WorkExperienceRow extends Component {
                     {positionTitle}
                 </td>
                 <td>
-                    {titleOfStudy}
+                    {mainTasks}
                 </td>
                 <td>
                     {dateFrom}

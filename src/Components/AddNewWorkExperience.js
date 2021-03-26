@@ -5,8 +5,8 @@ class AddNewWorkExperience extends Component {
     render() {
         return (
             <tr>
-                <td>
-                    <button type="button">Add New</button>
+                <td colSpan="5">
+                    <button type="button" onClick={() => this.props.addNewRow()}>Add New</button>
                 </td>
             </tr>
         );
