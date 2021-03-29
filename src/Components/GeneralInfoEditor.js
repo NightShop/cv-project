@@ -1,41 +1,33 @@
-import { Component } from "react";
+function GeneralInfoInput(props) {
 
-class GeneralInfoInput extends Component {
-
-    constructor (props) {
-        super(props);
-
-        this.setGeneralInfo = this.setGeneralInfo.bind(this);
-    };
-    
-
-    setGeneralInfo (e) {
-        this.props.updateGeneralInfo(e.target.id, e.target.value);
+    function setGeneralInfo(e) {
+        props.updateGeneralInfo(e.target.id, e.target.value);
     }
 
-    render() {
-        return (
-            <form>
-                <div>
-                    <label htmlFor="firstName">First Name:</label>
-                    <input id="firstName" onChange={this.setGeneralInfo} placeholder="First Name" value={this.props.generalInfo.firstName}></input>
-                </div>
-                <div>
-                    <label htmlFor="lastName">Last Name:</label>
-                    <input id="lastName" onChange={this.setGeneralInfo} placeholder="Last Name" value={this.props.generalInfo.lastName}></input>
-                </div>
-                <div>
-                    <label htmlFor="email">Email:</label>
-                    <input id="email" onChange={this.setGeneralInfo} placeholder="Email" value={this.props.generalInfo.email}></input>
-                </div>
-                <div>
-                    <label htmlFor="phoneNumber">Phone No.:</label>
-                    <input id="phoneNumber" onChange={this.setGeneralInfo} placeholder="Phone Number" value={this.props.generalInfo.phoneNumber}></input>
-                </div>
-                <button type="button" onClick={this.props.toggleEditor} >Submit</button>
-            </form>
-        )
-    }
+    return (
+        <form>
+            <div>
+                <label htmlFor="firstName">First Name:</label>
+                <input id="firstName" onChange={setGeneralInfo} placeholder="First Name" value={props.generalInfo.firstName}></input>
+            </div>
+            <div>
+                <label htmlFor="lastName">Last Name:</label>
+                <input id="lastName" onChange={setGeneralInfo} placeholder="Last Name" value={props.generalInfo.lastName}></input>
+            </div>
+            <div>
+                <label htmlFor="email">Email:</label>
+                <input id="email" onChange={setGeneralInfo} placeholder="Email" value={props.generalInfo.email}></input>
+            </div>
+            <div>
+                <label htmlFor="phoneNumber">Phone No.:</label>
+                <input id="phoneNumber" onChange={setGeneralInfo} placeholder="Phone Number" value={props.generalInfo.phoneNumber}></input>
+            </div>
+            <button type="button" onClick={props.toggleEditor} >Submit</button>
+        </form>
+    )
+
 }
+
+GeneralInfoInput.whyDidYouRender = true;
 
 export default GeneralInfoInput;

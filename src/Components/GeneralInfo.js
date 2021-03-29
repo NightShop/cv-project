@@ -1,46 +1,44 @@
-import { Component } from "react";
 import GeneralInfoDisplay from "./GeneralInfoDisplay";
 import GeneralInfoEditor from "./GeneralInfoEditor";
+import { useState } from "react";
 
-class GeneralInfo extends Component {
-    constructor() {
-        super();
-        this.state = {
-            firstName: "",
-            lastName: "",
-            email: "",
-            phoneNumber: "",
-            editorActive: true,
-        };
+function GeneralInfo() {
 
-        this.updateGeneralInfo = this.updateGeneralInfo.bind(this);
-        this.toggleEditor = this.toggleEditor.bind(this);
-    }
 
-    updateGeneralInfo(id, value) {
-        this.setState({
+    const [genInfo, setGenInfo] = useState({
+        firstName: "",
+        lastName: "",
+        email: "",
+        phoneNumber: "",
+        editorActive: true,
+    });
+
+    function updateGeneralInfo(id, value) {
+        setGenInfo({...genInfo,
             [id]: value,
-        })
-        console.log(this.state);
+        });
+        console.log(genInfo);
     }
 
-    toggleEditor () {
-        this.setState({
-            editorActive: !this.state.editorActive,
+    function toggleEditor() {
+        setGenInfo({...genInfo,
+            editorActive: !genInfo.editorActive,
         })
-        console.log(this.state);
+        console.log(genInfo);
     }
 
-    render() {
-        if(this.state.editorActive) {
-            return (
-                <GeneralInfoEditor toggleEditor={this.toggleEditor} updateGeneralInfo={this.updateGeneralInfo} generalInfo={this.state} />
-            )
-        }
+
+    if (genInfo.editorActive) {
         return (
-            <GeneralInfoDisplay toggleEditor={this.toggleEditor} generalInfo={this.state}/>
+            <GeneralInfoEditor toggleEditor={toggleEditor} updateGeneralInfo={updateGeneralInfo} generalInfo={genInfo} />
         )
-    };
+    }
+    return (
+        <GeneralInfoDisplay toggleEditor={toggleEditor} generalInfo={genInfo} />
+    )
+
 }
+
+GeneralInfo.whyDidYouRender = true;
 
 export default GeneralInfo;

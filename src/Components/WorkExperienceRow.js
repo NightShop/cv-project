@@ -1,10 +1,7 @@
-import { Component } from "react";
+function WorkExperienceRow (props) {
 
-class WorkExperienceRow extends Component {
-
-    render() {
         let companyName, positionTitle, mainTasks, dateFrom, dateTo;
-        ({companyName, positionTitle, mainTasks, dateFrom, dateTo} = this.props.data);
+        ({companyName, positionTitle, mainTasks, dateFrom, dateTo} = props.data);
         return (
             <tr>
                 <td>
@@ -23,13 +20,14 @@ class WorkExperienceRow extends Component {
                     {dateTo}
                 </td>
                 <td>
-                    <button onClick={(e) => this.props.toggleEditor(this.props.dataID)}>
+                    <button onClick={() => props.toggleEditor(props.dataID)}>
                         Edit
                     </button>
                 </td>
             </tr>
         );
-    }
 }
+
+WorkExperienceRow.whyDidYouRender = true;
 
 export default WorkExperienceRow;

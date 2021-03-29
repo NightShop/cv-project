@@ -1,17 +1,15 @@
-import { Component } from "react";
+function EducationRow(props) {
 
-class EducationRow extends Component {
 
-    render() {
-        return (
-            <tr>
-                <td>{this.props.data.schoolName}</td>
-                <td>{this.props.data.titleOfStudy}</td>
-                <td>{this.props.data.graduationYear}</td>
-                <td><button onClick={() => this.props.toggleEditor(this.props.dataKey)}>Edit</button></td>
-            </tr>
-        );
-    }
+    return (
+        <tr>
+            <td>{props.data.schoolName}</td>
+            <td>{props.data.titleOfStudy}</td>
+            <td>{props.data.graduationYear}</td>
+            <td><button onClick={() => props.toggleEditor(props.dataKey)}>Edit</button></td>
+        </tr>
+    );
+
 }
 
 export default EducationRow;
